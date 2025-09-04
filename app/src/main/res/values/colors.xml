@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="colorPrimary">#6200EE</color>        <!-- 紫色 -->
+    <color name="colorPrimaryVariant">#3700B3</color> <!-- 深紫色 -->
+    <color name="colorOnPrimary">#FFFFFF</color>      <!-- 白色 -->
+</resources>
