@@ -31,6 +31,7 @@
                     android:id="@+id/tvPrincipalLabel"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:layout_margin="8dp"
                     android:layout_marginEnd="8dp"
                     android:text="Enter Principal ($):"
                     android:textColor="#070707"
@@ -66,6 +67,16 @@
                     android:textColor="#0B0B0B"
                     android:textSize="16sp"
                     android:textStyle="bold" />
+
+                <TextView
+                    android:id="@+id/tvRateValue"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="10%"
+                    android:textColor="#000000"
+                    android:textSize="16sp"
+                    android:textStyle="bold" />
             </LinearLayout>
 
             <SeekBar
@@ -80,7 +91,74 @@
                 android:id="@+id/textView3"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="TextView" />
+                android:layout_margin="16dp"
+                android:layout_marginTop="4dp"
+                android:layout_marginEnd="8dp"
+                android:text="Select loan term"
+                android:textColor="#000000"
+                android:textSize="16sp"
+                android:textStyle="bold" />
+
+            <RadioGroup
+                android:id="@+id/rgYears"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent" >
+
+                <RadioButton
+                    android:id="@+id/rb15"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="16dp"
+                    android:text="15" />
+
+                <RadioButton
+                    android:id="@+id/rb20"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="16dp"
+                    android:layout_marginTop="12dp"
+                    android:text="20" />
+
+                <RadioButton
+                    android:id="@+id/rb30"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="16dp"
+                    android:layout_marginTop="12dp"
+                    android:checked="true"
+                    android:text="30" />
+
+            </RadioGroup>
+
+            <CheckBox
+                android:id="@+id/cbTaxes"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="16dp"
+                android:layout_marginTop="12dp"
+                android:text="Include Taxes &amp; Insurance" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="12dp"
+                android:orientation="horizontal">
+
+                <Button
+                    android:id="@+id/btnCalc"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="Calculate" />
+
+                <Button
+                    android:id="@+id/btnUninstall"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="12dp"
+                    android:layout_weight="1"
+                    android:text="Uninstall App" />
+            </LinearLayout>
 
         </LinearLayout>
     </ScrollView>
