@@ -70,32 +70,59 @@ public class MainActivity extends AppCompatActivity {
         btnUninstall.setOnClickListener(v -> uninstallApp());
     }
     private void calculateMortgage() {
-        String principalStr=etPrincipal.getText().toString().trim();
-        if(principalStr.isEmpty()){
-            Toast.makeText(this,"Please enter principal amount",Toast.LENGTH_SHORT).show();
+        String principalStr = etPrincipal.getText().toString().trim();
+        if (principalStr.isEmpty()) {
+            etPrincipal.setError("Principal is required");
+            Toast.makeText(this, "Please enter principal amount", Toast.LENGTH_SHORT).show();
             return;
         }
-        double principal=Double.parseDouble(principalStr);
-        double annualRate=sbRate.getProgress()/10.0;
-        double monthlyRate=annualRate/100/12;
-
-        int checkedId=rgYears.getCheckedRadioButtonId();
-        if(checkedId==-1){
-            Toast.makeText(this, "Please select loan term", Toast.LENGTH_SHORT).show();
+        if (!principalStr.matches("^\\d+(\\.\\d{1,2})?$")) {
+            etPrincipal.setError("Up to 2 decimals, e.g. 12345.67");
+            Toast.makeText(this, "Invalid principal format", Toast.LENGTH_SHORT).show();
             return;
         }
-        RadioButton selectedButton=findViewById(checkedId);
-        int years=Integer.parseInt(selectedButton.getText().toString().split(" ")[0]);
-        int months=years*12;
 
-        if(cbTaxes.isChecked()){
-            principal*=1.001;
+        double principal = 0;
+        try {
+            principal = Double.parseDouble(principalStr);
+            if (principal <= 0) {
+                etPrincipal.setError("Must be greater than 0");
+                Toast.makeText(this, "Principal must be > 0", Toast.LENGTH_SHORT).show();
+                return;
+            }
+        } catch (NumberFormatException e) {
+            etPrincipal.setError("Invalid number");
+            Toast.makeText(this, "Invalid principal number", Toast.LENGTH_SHORT).show();
+            return;
         }
+
+        int checkedId = rgYears.getCheckedRadioButtonId();
+        if (checkedId == -1) {
+            Toast.makeText(this, "Please select loan term (years)", Toast.LENGTH_SHORT).show();
+            // 让 RadioGroup 获取焦点并滚动到可见（可选）
+            rgYears.requestFocus();
+            return;
+        }
+
+        RadioButton rb = findViewById(checkedId);
+        int years = Integer.parseInt(rb.getText().toString().trim());
+        int months = years * 12;
+
+        double annualRate = sbRate.getProgress() / 10.0;     // e.g. 10.0
+        if (annualRate < 0 || annualRate > 20) {             // 你设的范围 0~20
+            Toast.makeText(this, "Rate out of range", Toast.LENGTH_SHORT).show();
+            return;
+        }
+        double monthlyRate = (annualRate / 100.0) / 12.0;
+
+        if (cbTaxes.isChecked()) principal *= 1.001;
+
         double monthlyPayment;
-        if(monthlyRate>0) {
-            monthlyPayment = principal * (monthlyRate * Math.pow(1 + monthlyRate, months)) / (Math.pow(1 + monthlyRate, months) - 1);
-        }else{
-            monthlyPayment=principal/months;
+        if (monthlyRate > 0) {
+            double pow = Math.pow(1 + monthlyRate, months);
+            monthlyPayment = principal * (monthlyRate * pow) / (pow - 1);
+        } else {
+            monthlyPayment = principal / months;
         }
 
         String result = String.format("Monthly Payment: $%.2f", monthlyPayment);
