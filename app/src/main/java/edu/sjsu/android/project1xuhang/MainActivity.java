@@ -12,13 +12,14 @@ import android.widget.RadioGroup;
 import android.widget.SeekBar;
 import android.widget.TextView;
 import android.widget.Toast;
+import android.provider.Settings;
 
 import androidx.appcompat.app.AppCompatActivity;
 
 public class MainActivity extends AppCompatActivity {
     private EditText etPrincipal;
     private SeekBar sbRate;
-    private TextView tvRateValue;
+    private TextView tvRateValue, tvResult;
     private RadioGroup rgYears;
     private CheckBox cbTaxes;
     private Button btnCalc, btnUninstall;
@@ -34,6 +35,7 @@ public class MainActivity extends AppCompatActivity {
         cbTaxes = findViewById(R.id.cbTaxes);
         btnCalc = findViewById(R.id.btnCalc);
         btnUninstall = findViewById(R.id.btnUninstall);
+        tvResult      = findViewById(R.id.tvResult);
 
         sbRate.setMax(200);
         sbRate.setProgress(100);
@@ -69,7 +71,7 @@ public class MainActivity extends AppCompatActivity {
 
         int checkedId=rgYears.getCheckedRadioButtonId();
         if(checkedId==-1){
-            Toast.makeText(this, "Please selesct loan term", Toast.LENGTH_SHORT).show();
+            Toast.makeText(this, "Please select loan term", Toast.LENGTH_SHORT).show();
             return;
         }
         RadioButton selectedButton=findViewById(checkedId);
@@ -86,23 +88,16 @@ public class MainActivity extends AppCompatActivity {
             monthlyPayment=principal/months;
         }
 
-        String result=String.format("Monthly Payment: $%.2f",monthlyPayment);
-        Toast.makeText(this,result,Toast.LENGTH_LONG).show();
+        String result = String.format("Monthly Payment: $%.2f", monthlyPayment);
+        tvResult.setText(result);
 
 
     }
     private void uninstallApp() {
-        Uri packageUri = Uri.parse("package:"+getPackageName());
-        Intent intent=new Intent(Intent.ACTION_DELETE,packageUri);
-        intent.setData(packageUri);
-        intent.putExtra(Intent.EXTRA_RETURN_RESULT,true);
-        try{
-            startActivity(intent);
-        }catch(Exception e){
-            Intent fallback = new Intent(Intent.ACTION_DELETE, packageUri);
-            startActivity(fallback);
-        }
-
+        Uri pkg = Uri.parse("package:" + getPackageName());
+        Intent settings = new Intent(Settings.ACTION_APPLICATION_DETAILS_SETTINGS, pkg);
+        startActivity(settings);
     }
 
-    }
+
+}
