@@ -1,8 +1,10 @@
 package edu.sjsu.android.project1xuhang;
 
+import android.app.Activity;
 import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
+import android.provider.Settings;
 import android.view.View;
 import android.widget.Button;
 import android.widget.CheckBox;
@@ -12,8 +14,9 @@ import android.widget.RadioGroup;
 import android.widget.SeekBar;
 import android.widget.TextView;
 import android.widget.Toast;
-import android.provider.Settings;
 
+import androidx.activity.result.ActivityResultLauncher;
+import androidx.activity.result.contract.ActivityResultContracts;
 import androidx.appcompat.app.AppCompatActivity;
 
 public class MainActivity extends AppCompatActivity {
@@ -24,7 +27,14 @@ public class MainActivity extends AppCompatActivity {
     private CheckBox cbTaxes;
     private Button btnCalc, btnUninstall;
 
-    @Override
+    private final ActivityResultLauncher<Intent> uninstallLauncher =
+            registerForActivityResult(new ActivityResultContracts.StartActivityForResult(), result -> {
+                if (result.getResultCode() == Activity.RESULT_OK) {
+                    Toast.makeText(this, "App was uninstalled", Toast.LENGTH_SHORT).show();
+                } else {
+                    Toast.makeText(this, "Uninstall cancelled", Toast.LENGTH_SHORT).show();
+                }
+            });
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
@@ -95,9 +105,13 @@ public class MainActivity extends AppCompatActivity {
     }
     private void uninstallApp() {
         Uri pkg = Uri.parse("package:" + getPackageName());
-        Intent settings = new Intent(Settings.ACTION_APPLICATION_DETAILS_SETTINGS, pkg);
-        startActivity(settings);
+        Intent del = new Intent(Intent.ACTION_DELETE, pkg);
+        del.putExtra(Intent.EXTRA_RETURN_RESULT, true);
+        try {
+            uninstallLauncher.launch(del);
+        } catch (Exception e) {
+            Intent fallback = new Intent(Settings.ACTION_APPLICATION_DETAILS_SETTINGS, pkg);
+            startActivity(fallback);
+        }
     }
-
-
 }
