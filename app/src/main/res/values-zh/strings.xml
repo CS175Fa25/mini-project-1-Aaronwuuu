@@ -1,0 +1,44 @@
+<resources>
+    <string name="app_name">房贷计算器</string>
+
+    <string name="label_enter_principal">输入贷款金额（$）：</string>
+    <string name="hint_enter_principal">输入贷款金额</string>
+
+    <string name="label_interest_rate">利率：</string>
+    <string name="label_select_loan_term">选择贷款年限</string>
+
+    <string name="years_15">15</string>
+    <string name="years_20">20</string>
+    <string name="years_30">30</string>
+
+    <string name="label_include_tax">包含税费和保险</string>
+
+    <string name="btn_calculate">计算</string>
+    <string name="btn_uninstall">卸载应用</string>
+
+    <string name="default_rate">10.0%</string>
+
+    <string name="text_monthly_payment_initial">每月还款：</string>
+    <string name="text_monthly_payment">每月还款：%1$s</string>
+
+    <string name="error_principal_required">必须输入贷款金额</string>
+    <string name="toast_enter_principal_amount">请输入贷款金额</string>
+
+    <string name="error_principal_format">最多两位小数，例如 12345.67</string>
+    <string name="toast_invalid_principal_format">贷款金额格式错误</string>
+
+    <string name="error_principal_positive">金额必须大于 0</string>
+    <string name="toast_principal_positive">贷款金额必须大于 0</string>
+
+    <string name="error_invalid_number">数字格式不正确</string>
+    <string name="toast_invalid_number">贷款金额不是有效数字</string>
+
+    <string name="toast_select_loan_term">请选择贷款年限</string>
+    <string name="toast_rate_out_of_range">利率超出范围</string>
+
+    <string name="toast_uninstall_success">应用已卸载</string>
+    <string name="toast_uninstall_cancelled">已取消卸载</string>
+
+    <string name="menu_language_settings">语言设置</string>
+</resources>
+

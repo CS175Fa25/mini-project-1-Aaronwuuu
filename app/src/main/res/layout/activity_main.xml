@@ -36,7 +36,7 @@
                     android:layout_height="wrap_content"
                     android:layout_margin="8dp"
                     android:layout_marginEnd="8dp"
-                    android:text="Enter Principal ($):"
+                    android:text="@string/label_enter_principal"
                     android:textColor="#070707"
                     android:textSize="16sp"
                     android:textStyle="bold" />
@@ -48,7 +48,7 @@
                     android:layout_marginTop="4dp"
                     android:layout_weight="1"
                     android:ems="10"
-                    android:hint="Enter principal"
+                    android:hint="@string/hint_enter_principal"
                     android:inputType="numberDecimal"
                     android:minHeight="48dp"
                     android:textSize="12sp"
@@ -66,7 +66,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginEnd="8dp"
-                    android:text="Interest rate:"
+                    android:text="@string/label_interest_rate"
                     android:textColor="#0B0B0B"
                     android:textSize="16sp"
                     android:textStyle="bold" />
@@ -97,7 +97,7 @@
                 android:layout_margin="16dp"
                 android:layout_marginTop="4dp"
                 android:layout_marginEnd="8dp"
-                android:text="Select loan term"
+                android:text="@string/label_select_loan_term"
                 android:textColor="#000000"
                 android:textSize="16sp"
                 android:textStyle="bold" />
@@ -112,7 +112,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginStart="16dp"
-                    android:text="15" />
+                    android:text="@string/years_15" />
 
                 <RadioButton
                     android:id="@+id/rb20"
@@ -120,7 +120,7 @@
                     android:layout_height="wrap_content"
                     android:layout_marginStart="16dp"
                     android:layout_marginTop="12dp"
-                    android:text="20" />
+                    android:text="@string/years_20" />
 
                 <RadioButton
                     android:id="@+id/rb30"
@@ -129,7 +129,7 @@
                     android:layout_marginStart="16dp"
                     android:layout_marginTop="12dp"
                     android:checked="true"
-                    android:text="30" />
+                    android:text="@string/years_30" />
 
             </RadioGroup>
 
@@ -139,7 +139,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginStart="16dp"
                 android:layout_marginTop="12dp"
-                android:text="Include Taxes &amp; Insurance" />
+                android:text="@string/label_include_tax" />
 
             <LinearLayout
                 android:layout_width="match_parent"
@@ -152,7 +152,7 @@
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
-                    android:text="Calculate" />
+                    android:text="@string/btn_calculate" />
 
                 <Button
                     android:id="@+id/btnUninstall"
@@ -160,14 +160,14 @@
                     android:layout_height="wrap_content"
                     android:layout_marginStart="12dp"
                     android:layout_weight="1"
-                    android:text="Uninstall App" />
+                    android:text="@string/btn_uninstall" />
             </LinearLayout>
             <TextView
                 android:id="@+id/tvResult"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="12dp"
-                android:text="Monthly Payment: $0.00"
+                android:text="@string/text_monthly_payment_initial"
                 android:textColor="#000000"
                 android:textSize="18sp"
                 android:textStyle="bold"

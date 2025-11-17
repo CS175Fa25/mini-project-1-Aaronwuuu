@@ -1,3 +1,43 @@
 <resources>
     <string name="app_name">Project1Xuhang</string>
+
+    <string name="label_enter_principal">Enter Principal ($):</string>
+    <string name="hint_enter_principal">Enter principal</string>
+
+    <string name="label_interest_rate">Interest rate:</string>
+    <string name="label_select_loan_term">Select loan term</string>
+
+    <string name="years_15">15</string>
+    <string name="years_20">20</string>
+    <string name="years_30">30</string>
+
+    <string name="label_include_tax">Include Taxes &amp; Insurance</string>
+
+    <string name="btn_calculate">Calculate</string>
+    <string name="btn_uninstall">Uninstall App</string>
+
+    <string name="default_rate">10.0%</string>
+
+    <string name="text_monthly_payment_initial">Monthly Payment:</string>
+    <string name="text_monthly_payment">Monthly Payment: %1$s</string>
+
+    <string name="error_principal_required">Principal is required</string>
+    <string name="toast_enter_principal_amount">Please enter principal amount</string>
+
+    <string name="error_principal_format">Up to 2 decimals, e.g. 12345.67</string>
+    <string name="toast_invalid_principal_format">Invalid principal format</string>
+
+    <string name="error_principal_positive">Must be greater than 0</string>
+    <string name="toast_principal_positive">Principal must be &gt; 0</string>
+
+    <string name="error_invalid_number">Invalid number</string>
+    <string name="toast_invalid_number">Invalid principal number</string>
+
+    <string name="toast_select_loan_term">Please select loan term (years)</string>
+    <string name="toast_rate_out_of_range">Rate out of range</string>
+
+    <string name="toast_uninstall_success">App was uninstalled</string>
+    <string name="toast_uninstall_cancelled">Uninstall cancelled</string>
+
+    <string name="menu_language_settings">Language settings</string>
 </resources>
